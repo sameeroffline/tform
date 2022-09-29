@@ -1,0 +1,105 @@
+<body>
+
+
+    <div class="container">
+        <h4>EMPLOYEE DATA ENTRY</h4>
+        <div [hidden]="submitted">
+            <form (ngSubmit)="onSubmit()" #DellForm="ngForm">
+
+                <div class="form-group">
+                    <label for="fname">FirstName</label>
+                    <input type="text" class="form-control" id="fname" required [(ngModel)]="model.firstname"
+                        name="fname" #fname="ngModel">
+                    <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger"> FirstName
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="lname">LastName</label>
+                    <input type="text" class="form-control" id="lname" required [(ngModel)]="model.lastname"
+                        name="lname" #lname="ngModel">
+                    <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger"> LastName
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="power">Gender</label>
+                    <select class="form-control" id="power" required [(ngModel)]="model.gender" name="power"
+                        #power="ngModel">
+                        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="mnumber">Number</label>
+                    <input type="number" id="mnumber" class="form-control" required [(ngModel)]="model.mobile"
+                        name="mnumber" #mnumber="ngModel">
+                    <div [hidden]="mnumber.valid || mnumber.pristine" class="alert alert-danger">numbers only
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="mail">Gmail</label>
+                    <input type="email" id="mail" class="form-control" required [(ngModel)]="model.gmail" name="mail"
+                        #mail="ngModel">
+                    <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">abc123@gmail.com
+                    </div>
+                </div>
+
+
+
+                <br>
+                <button type="button" class="btn btn-primary" (click)="newform(); DellForm.reset()">New
+                    Form</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success" [disabled]="!DellForm.form.valid">Submit</button>
+            </form><br>
+        </div>
+
+        <div [hidden]="!submitted">
+            <h2> submitted data:</h2>
+            <div class="row">
+                <div class="col-sm-3">FirstName</div>
+                <div class="col-sm-9">{{ model.firstname }}</div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-3">LastName</div>
+                <div class="col-sm-9">{{ model.lastname }}</div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-3">Gender</div>
+                <div class="col-sm-9">{{ model.gender }}</div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-3">Mobile Numebr</div>
+                <div class="col-sm-9">{{ model.mobile }}</div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-sm-3">Gmail</div>
+                <div class="col-sm-9">{{ model.gmail}}</div>
+            </div>
+
+            <button class="btn btn-success" (click)="submitted=false">back</button>
+
+        </div>
+
+
+    </div>
+
+</body>
